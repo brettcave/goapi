@@ -36,10 +36,24 @@ class GoAPI
     Stages.new(fetch(:api, :stages, pipeline, stage, :history))
   end
 
-  def artifacts(pipeline, pipeline_counter, stage, stage_counter, job_name)
-    fetch(:files, pipeline, pipeline_counter, stage, stage_counter, "#{job_name}.json")
+  # stage: object from stages
+  # job_name: job name, can be found in stage.jobs
+  def job_properties(stage, job_name)
+    text = @http.get(url(:properties, stage.pipeline_name, stage.pipeline_counter, stage.name, stage.counter, job_name))[1]
+    names, values = text.split("\n")
+    values = values.split(',')
+    OpenStruct.new(Hash[names.split(',').each_with_index.map do |name, i|
+      [name, values[i]]
+    end])
   end
 
+  # stage: object from stages
+  # job_name: job name, can be found in stage.jobs
+  def artifacts(stage, job_name)
+    fetch(:files, stage.pipeline_name, stage.pipeline_counter, stage.name, stage.counter, "#{job_name}.json")
+  end
+
+  # artifact: object from artifacts(stage, job_name)
   def artifact(artifact)
     raise "Only accept file type artifact" if artifact.type != 'file'
     u = URI(artifact.url)
