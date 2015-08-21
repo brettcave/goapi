@@ -1,6 +1,6 @@
 # Go API
 
-Go API
+[Go] API Ruby client.
 
 ## Installation
 
@@ -26,22 +26,29 @@ Or install it yourself as:
 
     go = GoAPI.new('server-url', basic_auth: [username, password])
 
+### Fetch pipeline stages history
+
+    require 'goapi'
+    go = GoAPI.new('server-url', basic_auth: [username, password])
+    go.stages(pipeline_name, stage_name)
+
 ### Fetch artifacts
 
-    # All artifacts for pipeline and stage
-    # You will get an lazy enumerator, which means it won't do anything
-    # until you really access the data.
-    # And they are order by time, latest first.
-    artifacts = go.artifacts(pipeline, stage)
-
-    # For example, get the latest build artifacts
-    artifacts.first(2).each do |artifact|
-      ....
+    require 'goapi'
+    go = GoAPI.new('server-url', basic_auth: [username, password])
+    stages = go.stages(pipeline_name, stage_name)
+    artifacts = go.artifacts(stages[0], job_name)
+    artifacts.map do |artifact|
+      if artifact.type == 'file'
+        go.artifact(artifact)
+      else # when type == 'folder'
+        ....
+      end
     end
 
 ## API design
 
-1. flat: one level API, you can find all APIs definition in class Mingle.
+1. flat: one level API, you can find all APIs definition in class GoAPI.
 2. data: all APIs return data object only, they are:
    1. Primitive type in Ruby
    2. OpenStruct object, with primitive type values (rule #1 flat)

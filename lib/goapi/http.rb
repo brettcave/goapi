@@ -10,7 +10,7 @@ class GoAPI
     end
 
     def initialize(credentials)
-      @credentials = credentials
+      @credentials = credentials || {}
     end
 
     def get(url)
