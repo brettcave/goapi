@@ -46,6 +46,8 @@ Or install it yourself as:
       end
     end
 
+More complex examples please checkout [examples](examples) directory in codebase
+
 ## API design
 
 1. flat: one level API, you can find all APIs definition in class GoAPI.
