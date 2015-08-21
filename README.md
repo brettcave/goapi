@@ -20,7 +20,7 @@ Or install it yourself as:
 
 ## Usage
 
-### Initialize with Basic Auth for SaaS Mingle site
+### Initialize with Go server url and Basic Auth credentials
 
     require 'goapi'
 
