@@ -1,6 +1,6 @@
 # Go API
 
-[Go](www.go.cd) API Ruby client.
+[Go](http://www.go.cd) API Ruby client.
 
 ## Installation
 
