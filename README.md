@@ -1,6 +1,6 @@
 # Go API
 
-[Go] API Ruby client.
+[Go](www.go.cd) API Ruby client.
 
 ## Installation
 
@@ -61,5 +61,5 @@ To install this gem onto your local machine, run `bundle exec rake install`. To 
 
 ## Contributing
 
-Bug reports and pull requests are welcome on GitHub at https://github.com/[USERNAME]/goapi.
+Bug reports and pull requests are welcome on GitHub at https://github.com/ThoughtWorksStudios/goapi.
 
