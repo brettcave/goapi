@@ -9,7 +9,7 @@ Gem::Specification.new do |spec|
   spec.authors       = ["Xiao Li"]
   spec.email         = ["swing1979@gmail.com"]
 
-  spec.summary       = %q{Go API ruby client.}
+  spec.summary       = %q{Go (http://www.go.cd/) API ruby client.}
   spec.homepage      = "https://github.com/ThoughtWorksStudios/goapi"
 
   spec.files         = `git ls-files -z`.split("\x0").reject { |f| f.match(%r{^(test|spec|features)/}) }
