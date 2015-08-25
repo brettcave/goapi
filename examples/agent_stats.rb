@@ -5,7 +5,8 @@ password = <your password>
 pipeline_name = <pipeline name>
 stage_name = <stage name>
 
-job_name_regex = /acceptance_\d+/
+job_name_regex = /.+/
+# job_name_regex = /acceptance_\d+/
 stage_count = 8
 
 lib_path = File.expand_path('../../lib', __FILE__)
